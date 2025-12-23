@@ -404,6 +404,15 @@
             font-size: 2rem;
             margin-bottom: 1.5rem;
             color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-specs h3 .price {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            font-weight: 600;
         }
 
         .spec-table {
@@ -789,7 +798,7 @@
                     <img src="images/1.jpg" alt="Model S1300">
                 </div>
                 <div class="product-specs">
-                    <h3>Model S1300</h3>
+                    <h3>Model S1300<span class="price">MSRP：11999€</span></h3>
                     <table class="spec-table">
                         <tr>
                             <td colspan="2"><span class="spec-category">Dimensions</span></td>
@@ -905,6 +914,116 @@
                     </table>
                 </div>
             </div>
+            <div class="product-showcase">
+                <div class="product-images">
+                    <img src="images/2.jpg" alt="B1200SC">
+                </div>
+                <div class="product-specs">
+                    <h3>B1200SC<span class="price">MSRP：10999€</span></h3>
+                    <table class="spec-table">
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Dimensions</span></td>
+                        </tr>
+                        <tr>
+                            <td>Length / Width / Height</td>
+                            <td>2100mm / 1500mm / 1030mm</td>
+                        </tr>
+                        <tr>
+                            <td>Seat Height</td>
+                            <td>805mm (Standard seat, DIN unloaded weight)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Engine & Performance</span></td>
+                        </tr>
+                        <tr>
+                            <td>Structure Form</td>
+                            <td>Horizontal opposed dual cylinder four stroke</td>
+                        </tr>
+                        <tr>
+                            <td>Displacement</td>
+                            <td>1170 cc</td>
+                        </tr>
+                        <tr>
+                            <td>Bore x Stroke</td>
+                            <td>101.0mm x 73.0mm</td>
+                        </tr>
+                        <tr>
+                            <td>Compression Ratio</td>
+                            <td>12.0:1</td>
+                        </tr>
+                        <tr>
+                            <td>Max Net Power</td>
+                            <td>80 kW @ 7250 rpm</td>
+                        </tr>
+                        <tr>
+                            <td>Max Torque</td>
+                            <td>116 N·m @ 6000 rpm</td>
+                        </tr>
+                        <tr>
+                            <td>Fuel</td>
+                            <td>Unleaded gasoline (Recommended)</td>
+                        </tr>
+                        <tr>
+                            <td>Fuel Tank Capacity</td>
+                            <td>18L (Available capacity)</td>
+                        </tr>
+                        <tr>
+                            <td>Emission Standard</td>
+                            <td>EURO 5</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Transmission & Chassis</span></td>
+                        </tr>
+                        <tr>
+                            <td>Gearbox</td>
+                            <td>Six speed gearbox</td>
+                        </tr>
+                        <tr>
+                            <td>Clutch</td>
+                            <td>Single disc dry clutch</td>
+                        </tr>
+                        <tr>
+                            <td>Frame Structure</td>
+                            <td>Grid frame with load-bearing drive unit</td>
+                        </tr>
+                        <tr>
+                            <td>Front Suspension</td>
+                            <td>Upright telescopic sleeve fork (Travel: 125mm)</td>
+                        </tr>
+                        <tr>
+                            <td>Rear Suspension</td>
+                            <td>Central shock absorber pillar with spiral spring (Travel: 120mm)<br>Adjustable tension level & spring preload</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Brakes & Wheels</span></td>
+                        </tr>
+                        <tr>
+                            <td>Front Brakes</td>
+                            <td>Hydraulic dual disc, 4-piston radial integral calipers, floating discs</td>
+                        </tr>
+                        <tr>
+                            <td>Rear Brakes</td>
+                            <td>Hydraulic single disc, 2-piston floating calipers, fixed disc</td>
+                        </tr>
+                        <tr>
+                            <td>Wheel Type</td>
+                            <td>Cast aluminum wheels</td>
+                        </tr>
+                        <tr>
+                            <td>Rim Size (Front/Rear)</td>
+                            <td>MTH2 3.50x17 / MTH2 5.50x17</td>
+                        </tr>
+                        <tr>
+                            <td>Tire Size (Front)</td>
+                            <td>120/70ZR17 M/C (58W)</td>
+                        </tr>
+                        <tr>
+                            <td>Tire Size (Rear)</td>
+                            <td>180/55ZR17 M/C (73W)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -926,12 +1045,6 @@
                 <div class="contact-card">
                     <h3>📧 Email</h3>
                     <p><a href="mailto:wcp.motorcycle@outlook.com">wcp.motorcycle@outlook.com</a></p>
-                </div>
-                <div class="contact-card">
-                    <h3>🇺🇸 USA</h3>
-                    <p><strong>WEST COAST PERFORMANCE POWERSPORTS INC</strong></p>
-                    <p>1373 CUSTOZA AVE</p>
-                    <p>ROWLAND HGHTS, CA 91748</p>
                 </div>
                 <div class="contact-card">
                     <h3>🇭🇰 HONG KONG</h3>
@@ -1012,7 +1125,6 @@
             'images/11.jpg', 'images/12.jpg', 'images/13.jpg', 'images/14.jpg',
             'images/15.jpg', 'images/16.jpg', 'images/17.jpg', 'images/18.jpg',
             'images/19.jpg', 'images/20.jpg', 'images/21.jpg',
-            'images/digm1.png', 'images/digm2.png', 'images/digm3.png'
         ];
 
         const galleryGrid = document.getElementById('galleryGrid');
