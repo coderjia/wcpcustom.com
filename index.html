@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>West Coast Performance - Professional Motorcycle Customization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #ff6b35;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a1a1a;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            transition: var(--transition);
+        }
+
+        nav.scrolled .logo {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/1.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--text-light);
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+
+        /* Company Introduction */
+        .intro {
+            background: var(--bg-light);
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .intro-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 1.1rem;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li strong {
+            color: var(--accent-color);
+        }
+
+        .intro-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Customization Section */
+        .customization {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .customization .section-title {
+            color: var(--text-light);
+        }
+
+        .customization .section-title::after {
+            background: var(--accent-color);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modification-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mod-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .mod-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .mod-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .mod-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .mod-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Product Section */
+        .product {
+            background: var(--bg-light);
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .product-images {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .product-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: block;
+        }
+
+        .product-images img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-specs {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-specs h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .spec-table tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .spec-table td {
+            padding: 0.8rem 0;
+            font-size: 0.95rem;
+        }
+
+        .spec-table td:first-child {
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 40%;
+        }
+
+        .spec-category {
+            background: var(--accent-color);
+            color: var(--text-light);
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .gallery .section-title {
+            color: var(--text-light);
+        }
+
+        .gallery .section-title::after {
+            background: var(--accent-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-card p {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Modal for Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: var(--text-light);
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .intro-content,
+            .product-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .product-images {
+                position: relative;
+                top: 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .process-steps,
+            .modification-types {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <img src="images/logo.png" alt="West Coast Performance Logo" class="logo">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#intro">About</a></li>
+                <li><a href="#customization">Customization</a></li>
+                <li><a href="#product">Products</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>West Coast Performance</h1>
+            <p>Professional Motorcycle Customization | Since 2012</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Company Introduction -->
+    <section class="intro" id="intro">
+        <div class="container">
+            <h2 class="section-title">Company Introduction</h2>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h3>About Us</h3>
+                    <p>The brand was established in <strong>2012</strong>. Our main business encompasses the design and manufacture of automobiles, motorcycles, motorboats, ATVs, UTVs, as well as accessories and supplies related to RVs.</p>
+                    <ul class="features">
+                        <li><strong>Design Excellence:</strong> Several outstanding designs from our design team have won relevant awards multiple times.</li>
+                        <li><strong>Manufacturing Capabilities:</strong> Our own motor vehicle manufacturing factory provides customers with high-quality customized motor vehicle services.</li>
+                        <li><strong>Certifications:</strong> World Manufacturing Plant qualification issued by the <strong>SAE Engineer Alliance</strong> (USA), and <strong>TS16949</strong> management system under the <strong>ISO9001</strong> certification.</li>
+                    </ul>
+                </div>
+                <div class="intro-image">
+                    <img src="images/4.jpg" alt="Company Introduction">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Section -->
+    <section class="customization" id="customization">
+        <div class="container">
+            <h2 class="section-title">Customized Business</h2>
+            
+            <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem; color: var(--accent-color);">Powersports Customization</h3>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Consultation</h4>
+                    <p>Communicating with the customer to understand their needs.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Design Phase</h4>
+                    <p>Discussing the design and repeatedly modifying it until the customer is satisfied with the final draft.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Production</h4>
+                    <p>Starting production based on the parameters of the drawings.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Craftsmanship</h4>
+                    <p>All accessories are <strong>self-made</strong> without using mass-produced parts. Although time-consuming, this guarantees a unique customized vehicle.</p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; font-size: 1.8rem; margin-top: 4rem; margin-bottom: 2rem; color: var(--accent-color);">Track Specific Vehicle Customization</h3>
+            <div class="modification-types">
+                <div class="mod-card">
+                    <h4>1. Basic Modification of Primary Circuit Car</h4>
+                    <ul>
+                        <li>Adjustable height separation handle</li>
+                        <li>Exhaust modification</li>
+                        <li>Adjustable height pedal</li>
+                        <li>Chain & Tires upgrade</li>
+                        <li>Racing car shell</li>
+                        <li>Brake pipe upgrade</li>
+                        <li>Gearbox tuning (number of gears, gear ratio, and power output)</li>
+                        <li>Dedicated limiters and steering damping</li>
+                        <li>Customization and calibration of shock absorbers</li>
+                    </ul>
+                </div>
+                <div class="mod-card">
+                    <h4>2. Intermediate Racing Car Modification</h4>
+                    <ul>
+                        <li>ECU upgrade</li>
+                        <li>Internal engine component upgrade</li>
+                        <li>Overall lightweighting of the vehicle body</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product" id="product">
+        <div class="container">
+            <h2 class="section-title">Product Details</h2>
+            <div class="product-showcase">
+                <div class="product-images">
+                    <img src="images/1.jpg" alt="Model S1300">
+                </div>
+                <div class="product-specs">
+                    <h3>Model S1300</h3>
+                    <table class="spec-table">
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Dimensions</span></td>
+                        </tr>
+                        <tr>
+                            <td>Length / Width / Height</td>
+                            <td>2180mm / 735mm / 1165mm</td>
+                        </tr>
+                        <tr>
+                            <td>Wheelbase</td>
+                            <td>1480mm</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum Ground Clearance</td>
+                            <td>125mm</td>
+                        </tr>
+                        <tr>
+                            <td>Seat Height</td>
+                            <td>800mm</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>262 kg</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Engine & Performance</span></td>
+                        </tr>
+                        <tr>
+                            <td>Engine Model</td>
+                            <td>WCP1 (Water cooling, Four stroke, Inline 4, DOHC, 4-valve)</td>
+                        </tr>
+                        <tr>
+                            <td>Displacement</td>
+                            <td>1339cc</td>
+                        </tr>
+                        <tr>
+                            <td>Bore x Stroke</td>
+                            <td>81.0 mm x 65.0 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Compression Ratio</td>
+                            <td>12.5</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Output Power</td>
+                            <td>138kW (188 hp) @ 9700 rpm</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Torque</td>
+                            <td>149 N·m (15.2 kgf·m) @ 7000 rpm</td>
+                        </tr>
+                        <tr>
+                            <td>Fuel Injection System</td>
+                            <td>Self-excited / All transistor type</td>
+                        </tr>
+                        <tr>
+                            <td>Lubrication Method</td>
+                            <td>Pressurized conveying wet lubrication</td>
+                        </tr>
+                        <tr>
+                            <td>Fuel Tank Capacity</td>
+                            <td>20 Liters</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Transmission & Chassis</span></td>
+                        </tr>
+                        <tr>
+                            <td>Clutch Type</td>
+                            <td>Wet multi-disc coil spring</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission Type</td>
+                            <td>Constant engagement 6-speed</td>
+                        </tr>
+                        <tr>
+                            <td>Framework Form</td>
+                            <td>Diamond</td>
+                        </tr>
+                        <tr>
+                            <td>Toe Angle / Camber Angle</td>
+                            <td>23° / 90mm</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Brakes & Tires</span></td>
+                        </tr>
+                        <tr>
+                            <td>Braking Form (Front)</td>
+                            <td>Hydraulic dual disc brake (ABS)</td>
+                        </tr>
+                        <tr>
+                            <td>Braking Form (Rear)</td>
+                            <td>Hydraulic single disc brake (ABS)</td>
+                        </tr>
+                        <tr>
+                            <td>Tire Size (Front)</td>
+                            <td>120/70ZR17M/C (58W)</td>
+                        </tr>
+                        <tr>
+                            <td>Tire Size (Rear)</td>
+                            <td>190/50ZR17M/C (73W)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="spec-category">Other</span></td>
+                        </tr>
+                        <tr>
+                            <td>Seating Capacity</td>
+                            <td>2 Passengers</td>
+                        </tr>
+                        <tr>
+                            <td>Emission Standard</td>
+                            <td>Meets European IV emission control requirements</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-card">
+                    <h3>📧 Email</h3>
+                    <p><a href="mailto:wcp.motorcycle@outlook.com">wcp.motorcycle@outlook.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <h3>🇺🇸 USA</h3>
+                    <p><strong>WEST COAST PERFORMANCE POWERSPORTS INC</strong></p>
+                    <p>1373 CUSTOZA AVE</p>
+                    <p>ROWLAND HGHTS, CA 91748</p>
+                </div>
+                <div class="contact-card">
+                    <h3>🇭🇰 HONG KONG</h3>
+                    <p><strong>WEST COAST PERFORMANCE LIMITED</strong></p>
+                    <p>RM A07, 1701-02 NEW TREND CENTRE</p>
+                    <p>704 PRINCE EDWARD ROAD EAST</p>
+                    <p>SAN PO KONG, KLN</p>
+                </div>
+                <div class="contact-card">
+                    <h3>🇻🇳 VIETNAM</h3>
+                    <p><strong>WEST COAST PERFORMANCE VIETNAM COMPANY LIMITED</strong></p>
+                    <p>28 Tan Thoi Nhat 1B, Tan Thoi Nhat Ward</p>
+                    <p>District 12, Ho Chi Minh City, Vietnam</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 West Coast Performance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Gallery -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Gallery Image">
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Populate gallery
+        const galleryImages = [
+            'images/1.jpg', 'images/4.jpg', 'images/5.jpg', 'images/6.jpg',
+            'images/7.jpg', 'images/8.jpg', 'images/9.jpg', 'images/10.jpg',
+            'images/11.jpg', 'images/12.jpg', 'images/13.jpg', 'images/14.jpg',
+            'images/15.jpg', 'images/16.jpg', 'images/17.jpg', 'images/18.jpg',
+            'images/19.jpg', 'images/20.jpg', 'images/21.jpg',
+            'images/digm1.png', 'images/digm2.png', 'images/digm3.png'
+        ];
+
+        const galleryGrid = document.getElementById('galleryGrid');
+        galleryImages.forEach((src, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item fade-in';
+            item.style.animationDelay = `${index * 0.1}s`;
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `Gallery Image ${index + 1}`;
+            img.loading = 'lazy';
+            item.appendChild(img);
+            item.addEventListener('click', function() {
+                openModal(src);
+            });
+            galleryGrid.appendChild(item);
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+
+        function openModal(src) {
+            modalImage.src = src;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModalFunc() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        closeModal.addEventListener('click', closeModalFunc);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModalFunc();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeModalFunc();
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
